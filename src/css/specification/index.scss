@@ -1,0 +1,141 @@
+@import "../common/mixins_elements/_site-variable.scss";
+@import "../common/base.scss";
+
+/**首页 index.html**/
+.topic-title {
+    margin: 50px auto 60px;
+    text-align: center;
+    font-size: 3.2rem;
+}
+.sort-menu {
+    text-align: center;
+}
+.sort-menu a {
+    border: 1px solid $border-brown-color;
+    margin: 20px;
+    padding: 20px 45px;
+    display: inline-block;
+    font-size: 1.6rem;
+    background-color: $background-gray-color;
+    color: $site-key-color;
+    text-align: center;
+}
+.sort-menu a:hover {
+    background-color: $background-brown-color;
+    color: $font-white-color;
+}
+.quote-from {
+    margin-top: 50px;
+    padding-right: 30px;
+    text-align: right;
+    color: $font-brown-color;
+}
+/** 内容页共用 **/
+.side-nav-box {
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+.side-nav-box i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+.side-nav {
+    display: none;
+    max-height: 436px;
+    overflow-y: scroll;
+    padding:5px 3px;
+    border-left:1px dotted $border-brown-color;
+    border-bottom:1px dotted $border-brown-color;
+    background-color: #000;
+    opacity: .7;
+}
+.side-nav a {
+    padding-left:8px;
+    display: block;
+    color: $font-gray-color;
+}
+.side-nav .side-nav-tit {
+    color: #fff;
+    padding-left:0;
+}
+.main-cont {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.main-cont h2 {
+    color: $site-key-color;
+}
+.main-cont h3 {
+    color: $font-deep-color;
+}
+.cont-box {
+    color: $font-brown-color;
+}
+.code-box {
+    padding: 3px;
+    border: 1px solid $border-brown-color;
+    background-color: $background-gray-color;
+    word-wrap: break-word;
+}
+.code-box i {
+    display: block;
+    color: $site-key-color;
+}
+.code-box i.bad {
+    color: $background-ok-color;
+}
+.code-box .icon-disc {
+    float: left;
+    margin: 15px 10px 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $background-brown-color;
+}
+.cont-table th {
+    font-weight: 700;
+}
+.cont-table th,
+.cont-table td {
+    padding: 5px 10px;
+}
+.cont-table .tr-ff-ss {
+    font-family: "SimSun";
+}
+.cont-table .tr-ff-sh {
+    font-family: "SimHei";
+}
+.cont-table .tr-ff-yh {
+    font-family: "Microsoft YaHei";
+}
+.cont-table .tr-ff-jh {
+    font-family: "Microsoft JhengHei";
+}
+.cont-table .tr-ff-sth {
+    font-family: "STHeiti";
+}
+.cont-table .tr-ff-hsgb {
+    font-family: "Hiragino Sans GB";
+}
+.cont-table .tr-ff-wqyzh {
+    font-family: "WenQuanYi Zen Hei";
+}
+.cont-table .tr-ff-wqymh {
+    font-family: "WenQuanYi Micro Hei";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

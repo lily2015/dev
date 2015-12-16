@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>前端规范——CSS</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" type="text/css" href="../../../css/specification/index.css">
+    <!--# include file="/dev/dist/views/ssi/specification/environment-config.html" -->
+</head>
+<body>
+
+<!-- 前言 -->
+<section class="main-cont">
+    <h2 id="css_introduction">前言</h2>
+    <h3 id="css_introduction_1">命名</h3>
+    <div class="cont-box">
+        <p>[强制]禁止过于复杂的选择器</p>
+        <div class="code-box">
+            <i class="iconfont bad">&#xe602;</i>
+            #main-nav ul li ul li div { }  <br>
+            #content article h1:first-child { }  <br>
+            #sidebar &gt; div &gt; h3 + p { } 
+        </div>
+        <p>[强制]禁止过于通用的类名</p>
+        <div class="code-box">
+            <i class="iconfont bad">&#xe602;</i>
+            .title{} <br>
+            .contents{} <br>
+            .box{} <br>
+        </div>
+    </div>
+</section>
+
+<!-- 代码风格 -->
+<section class="main-cont">
+    <h2 id="css_style">代码风格</h2>
+    <h3 id="css_style_1">文件</h3>
+    <div class="cont-box">
+        <p>[建议]CSS 文件使用无 BOM 的 UTF-8 编码。</p>
+    </div>
+    <h3 id="css_style_2">缩进</h3>
+    <div class="cont-box">
+        <p>[强制]使用4个空格做为一个缩进层级。</p>
+        <div class="code-box">
+            .selector { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin: 0; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;padding: 0; <br>
+            }
+        </div>
+    </div>
+    <h3 id="css_style_3">空格</h3>
+    <div class="cont-box">
+        <p>[强制]选择器 与 { 之间必须包含空格。</p>
+        <p>[强制]属性名与之后的 : 之间不允许包含空格，: 与属性值之间必须包含空格。</p>
+        <p>[强制]列表型属性值书写在单行时， , 后必须跟一个空格。</p>
+        <div class="code-box">
+            .selector{ <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-family: Arial, sans-serif;<br>
+            }
+        </div>
+    </div>
+    <h3 id="css_style_4">行长度</h3>
+    <div class="cont-box">
+        <p>[强制]每行不得超过 120 个字符，除非单行不可分割(如：URL超长)。</p>
+        <p>[建议]对于超长的样式，在样式值的 空格 处或 , 后换行，建议按逻辑分组。</p>
+        <div class="code-box">
+            /* 不同属性值按逻辑分组 */ <br>
+            background: <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;transparent url(aVeryVeryVeryLongUrlIsPlacedHere) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;no-repeat 0 0; <br><br>
+
+            /* 可重复多次的属性，每次重复一行 */ <br>
+            background-image: <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;url(aVeryVeryVeryLongUrlIsPlacedHere) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;url(anotherVeryVeryVeryLongUrlIsPlacedHere); <br><br>
+
+            /* 类似函数的属性值可以根据函数调用的缩进进行 */ <br>
+            background-image: -webkit-gradient( <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;linear, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;left bottom, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;left top, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color-stop(0.04, rgb(88,94,124)), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color-stop(0.52, rgb(115,123,162)) <br>
+            );
+        </div>
+    </div>
+    <h3 id="css_style_5">选择器</h3>
+    <div class="cont-box">
+        <p>[强制]当一个 rule 包含多个 selector 时，每个选择器声明必须独占一行。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            .post,<br>
+            .page,<br>
+            .comment {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;line-height: 1.5;<br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            .post, .page, .comment {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;line-height: 1.5;<br>
+            }
+        </div>
+
+        <p>[强制] > 、 + 、 ~ 选择器的两边各保留一个空格。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            main > nav { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;padding: 10px; <br>
+            } <br>
+
+            label + input { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin-left: 5px; <br>
+            } <br>
+
+            input:checked ~ button { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #69C; <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            main>nav { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;padding: 10px; <br>
+            } <br>
+
+            label+input { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin-left: 5px; <br>
+            } <br>
+
+            input:checked~button { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #69C; <br>
+            } <br>
+        </div>
+
+        <p>[强制]属性选择器中的值必须用双引号包围。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            article[character="juliet"] { <br>
+                voice-family: "Vivien Leigh", victoria, female <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i> <br>
+            article[character='juliet'] { <br>
+                voice-family: "Vivien Leigh", victoria, female <br>
+            }
+        </div>
+    </div>
+    <h3 id="css_style_6">属性</h3>
+    <div class="cont-box">
+        <p>[强制]属性定义必须另起一行。属性定义后必须以分号结尾。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            .selector { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin: 0; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;padding: 0; <br>
+            } <br>
+            <i class="iconfont bad">&#xe602;</i>
+            .selector { margin: 0; padding: 0; }
+        </div>
+    </div>
+</section>
+
+<!-- 通用 -->
+<section class="main-cont">
+    <h2 id="css_normal">通用</h2>
+    <h3 id="css_normal_1">选择器</h3>
+    <div class="cont-box">
+        <p>[强制]如无必要，不得为 id 、 class 选择器添加类型选择器进行限定。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            #error, <br>
+            .danger-message { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-color: #c00; <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            dialog#error, <br>
+            p.danger-message { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-color: #c00; <br>
+            }
+        </div>
+        
+        <p>[建议]选择器的嵌套层级应不大于 3 级，位置靠后的限定条件应尽可能精确。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            #username input {} <br>
+            .comment .avatar {} <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            .page .header .login #username input {} <br>
+            .comment div * {}
+        </div>
+    </div>
+    <h3 id="css_normal_2">属性缩写</h3>
+    <div class="cont-box">
+        <p>[建议]在可以使用缩写的情况下，尽量使用属性缩写。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            .post { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font: 12px/1.5 arial, sans-serif; <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            .post { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-family: arial, sans-serif; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-size: 12px; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;line-height: 1.5; <br>
+            }
+        </div>
+
+        <p>[建议]使用 border / margin / padding 等缩写时，应注意隐含值对实际数值的影响，确实需要设置多个方向的值时才使用缩写。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            .page { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin-left: 5px; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin-right: 5px; <br>
+            } <br>
+            <i class="iconfont bad">&#xe602;</i>
+            .page { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin: 0 5px; <br>
+            }
+        </div>
+    </div>
+    <h3 id="css_normal_3">属性书写顺序</h3>
+    <div class="cont-box">
+        <p>[建议]同一 rule set 下的属性在书写时，应按功能进行分组，并以 Formatting Model（布局方式、位置） > Box Model（尺寸） > Typographic（文本相关） > Visual（视觉效果）的顺序书写，以提高代码的可读性。</p>
+        <div class="code-box">
+            <p>
+                <i class="icon-disc"></i>
+                Formatting Model 相关属性包括： position / top / right / bottom / left / float / display / overflow 等
+            </p>
+            <p>
+                <i class="icon-disc"></i>
+                Box Model 相关属性包括： border / margin / padding / width / height 等
+            </p>
+            <p>
+                <i class="icon-disc"></i>
+                Typographic 相关属性包括： font / line-height / text-align / word-wrap 等
+            </p>
+            <p>
+                <i class="icon-disc"></i>
+                Visual 相关属性包括： background / color / transition / list-style 等
+            </p>
+            <p>
+                <i class="icon-disc"></i>
+                如果包含 content 属性，应放在最前面
+            </p>
+        </div>
+    </div>
+    <h3 id="css_normal_6">z-index</h3>
+    <div class="cont-box">
+        <p>[建议]将 z-index 进行分层，对文档流外绝对定位元素的视觉层级关系进行管理。</p>
+    </div>
+</section>
+
+<!-- 值与单位 -->
+<section class="main-cont">
+    <h2 id="css_value">值与单位</h2>
+    <h3 id="css_value_1">文本</h3>
+    <div class="cont-box">
+        <p>[强制]文本内容必须用双引号包围。(如选择器、属性值等内容中。外部引用的内容除外，如 @font-face 。)</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            html[lang|="zh"] q:after { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-family: "Microsoft YaHei", sans-serif; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;content: "”"; <br>
+            } <br>
+            <i class="iconfont bad">&#xe602;</i>
+            html[lang|='zh'] q:after { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-family: 'Microsoft YaHei', sans-serif; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;content: '”'; <br>
+            }
+        </div>
+    </div>
+
+    <h3 id="css_value_2">数值</h3>
+    <div class="cont-box">
+        <p>[强制]当数值为 0 - 1 之间的小数时，省略整数部分的 0。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            panel { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;opacity: .8; <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            panel { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;opacity: 0.8; <br>
+            }
+        </div>
+    </div>
+
+    <h3 id="css_value_3">url</h3>
+    <div class="cont-box">
+        <p>[强制]url() 函数中的路径不加引号。</p>
+        <div class="code-box">
+            body { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background: url(bg.png); <br>
+            }
+        </div>
+        <p>[建议]url() 函数中，如果绝对路径引用外部资源的 URL 协议部分与当前CSS相同，可省去协议部分。</p>
+        <div class="code-box">
+            body { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background: url(///img/bg.png) no-repeat 0 0; <br>
+            }
+        </div>
+    </div>
+
+    <h3 id="css_value_4">长度</h3>
+    <div class="cont-box">
+        <p>[强制]长度为 0 时须省略单位。 (也只有长度单位可省)</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            body { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;padding: 0 5px; <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            body { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;padding: 0px 5px; <br>
+            }
+        </div>
+    </div>
+
+    <h3 id="css_value_5">颜色</h3>
+    <div class="cont-box">
+        <p>[强制]RGB颜色值必须使用十六进制记号形式 #rrggbb 。不允许使用 rgb() 。</p>
+        <p>带有alpha的颜色信息可以使用 rgba() 。使用 rgba() 时每个逗号后必须保留一个空格。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 0 2px rgba(0, 128, 0, .3); <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;border-color: #008000; <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 0 2px rgba(0,128,0,.3); <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;border-color: rgb(0, 128, 0); <br>
+            }
+        </div>
+
+        <p>[强制]颜色值可以缩写时，必须使用缩写形式。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #aca; <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #aaccaa; <br>
+            } <br>
+        </div>
+
+        <p>[强制]颜色值不允许使用命名色值。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: #90ee90; <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: lightgreen; <br>
+            } <br>
+        </div>
+
+        <p>[建议]颜色值中的英文字符采用小写。如不用小写也需要保证同一项目内保持大小写一致。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #aca; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: #90ee90; <br>
+            } <br>
+
+            <i class="iconfont">&#xe603;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #ACA; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: #90EE90; <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #ACA; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: #90ee90; <br>
+            } <br>
+        </div>
+    </div>
+
+    <h3 id="css_value_6">2D位置</h3>
+    <div class="cont-box">
+        <p>[强制]必须同时给出水平和垂直方向的位置。(为避免理解上的困扰)</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-position: center top; /* 50% 0% */ <br>
+            } <br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            .success { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-position: top; /* 50% 0% */ <br>
+            } <br>
+        </div>
+    </div>
+</section>
+
+<!-- 文本编排 -->
+<section class="main-cont">
+    <h2 id="css_text">文本编排</h2>
+    <h3 id="css_text_1">字体族</h3>
+    <div class="cont-box">
+        <p>[强制]font-family 属性中的字体族名称应使用字体的英文 Family Name ，其中如有空格，须放置在引号中。</p>
+        <div class="code-box">
+            <table class="cont-table" border="1">
+                <tr>
+                    <th>字体</th>
+                    <th>操作系统</th>
+                    <th>Family Name</th>
+                </tr>
+                <tr class="tr-ff-ss">
+                    <td>宋体 (中易宋体)</td>
+                    <td>Windows</td>
+                    <td>SimSun</td>
+                </tr>
+                <tr class="tr-ff-sh">
+                    <td>黑体 (中易黑体)</td>
+                    <td>Windows</td>
+                    <td>SimHei</td>
+                </tr>
+                <tr class="tr-ff-yh">
+                    <td>微软雅黑</td>
+                    <td>Windows</td>
+                    <td>Microsoft YaHei</td>
+                </tr>
+                <tr class="tr-ff-jh">
+                    <td>微软正黑</td>
+                    <td>Windows</td>
+                    <td>Microsoft JhengHei</td>
+                </tr>
+                <tr class="tr-ff-sth">
+                    <td>华文黑体</td>
+                    <td>Mac/iOS</td>
+                    <td>STHeiti</td>
+                </tr>
+                <tr class="tr-ff-hsgb">
+                    <td>冬青黑体</td>
+                    <td>Mac/iOS</td>
+                    <td>Hiragino Sans GB</td>
+                </tr>
+                <tr class="tr-ff-wqyzh">
+                    <td>文泉驿正黑</td>
+                    <td>Linux</td>
+                    <td>WenQuanYi Zen Hei</td>
+                </tr>
+                <tr class="tr-ff-wqymh">
+                    <td>文泉驿微米黑</td>
+                    <td>Linux</td>
+                    <td>WenQuanYi Micro Hei</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <h3 id="css_text_2">字号</h3>
+    <div class="cont-box">
+        <p>[强制]需要在 Windows 平台显示的中文内容，其字号应不小于 12px 。</p>
+    </div>
+
+    <h3 id="css_text_3">字体风格</h3>
+    <div class="cont-box">
+        <p>[建议]需要在 Windows 平台显示的中文内容，不要使用除 normal 外的 font-style 。其他平台也应慎用。</p>
+        <div class="code-box">
+            由于中文字体没有 italic 风格的实现，所有浏览器下都会 fallback 到 obilique 实现 (自动拟合为斜体)，小字号下 (特别是 Windows 下会在小字号下使用点阵字体的情况下) 显示效果差，造成阅读困难。
+        </div>
+    </div>
+    
+    <h3 id="css_text_4">字重</h3>
+    <div class="cont-box">
+        <p>[强制]font-weight 属性必须使用数值方式描述。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            h1 { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-weight: 700; <br>
+            } <br>
+            <i class="iconfont bad">&#xe602;</i>
+            h1 { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold; <br>
+            }
+        </div>
+    </div>
+
+    <h3 id="css_text_5">行高</h3>
+    <div class="cont-box">
+        <p>[建议]line-height 在定义文本段落时，应使用数值。</p>
+    </div>
+</section>
+<!-- 导航 -->
+<nav class="side-nav-box">
+    <i class="iconfont">&#xe601;</i>
+    <div class="side-nav">
+        <a href="#css_introduction" class="side-nav-tit">前言</a>
+        <a href="#css_introductionp_1">命名</a>
+
+        <a href="#css_style" class="side-nav-tit">代码风格</a>
+        <a href="#css_style_1">文件</a>
+        <a href="#css_style_2">缩进</a>
+        <a href="#css_style_3">空格</a>
+        <a href="#css_style_4">行长度</a>
+        <a href="#css_style_5">选择器</a>
+        <a href="#css_style_6">属性</a>
+
+
+        <a href="#css_normal" class="side-nav-tit">通用</a>
+        <a href="#css_normal_1">选择器</a>
+        <a href="#css_normal_2">属性缩写</a>
+        <a href="#css_normal_3">属性书写顺序</a>
+        <a href="#css_normal_6">z-index</a>
+
+
+        <a href="#css_value" class="side-nav-tit">值与单位</a>
+        <a href="#css_value_1">文本</a>
+        <a href="#css_value_2">数值</a>
+        <a href="#css_value_3">url</a>
+        <a href="#css_value_4">长度</a>
+        <a href="#css_value_5">颜色</a>
+        <a href="#css_value_6">2D位置</a>
+
+
+        <a href="#css_text" class="side-nav-tit">文本编排</a>
+        <a href="#css_text_1">字体族</a>
+        <a href="#css_text_2">字号</a>
+        <a href="#css_text_3">字体风格</a>
+        <a href="#css_text_4">字重</a>
+        <a href="#css_text_5">行高</a>
+
+        <a href="#css_animation" class="side-nav-tit">变换与动画</a>
+
+        <a href="#css_response" class="side-nav-tit">响应式</a>
+
+        <a href="#css_compatibility" class="side-nav-tit">兼容性</a>
+        <a href="#css_compatibility_1">属性前缀</a>
+        <a href="#css_compatibility_2">Hack</a>
+        <a href="#css_compatibility_3">Expression</a>
+    </div>
+</nav>
+
+
+</body>
+</html>

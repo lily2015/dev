@@ -1,0 +1,71 @@
+/**
+ * css变量，主要用来定义站点的样式的基本框架、颜色、字体等，通过更改变量值可以实现站点基本风格的改变
+ */
+
+/**
+ * 颜色 用于
+ * key:站点风格的颜色，key不做类型区分
+ * deep:颜色最深 
+ * brown:颜色次深 
+ * gray:颜色较浅 
+ * highlight:高亮，主要用于disabled状态
+ * ok:正确状态色，green
+ * warning:警示色，orange
+ * error:报错色，red
+ */
+
+//网站风格关键色
+$site-key-color: #c40000;
+
+//文字颜色 white:白色 link:用于a标签 rmb:用于显示价格
+$font-deep-color: #000;
+$font-brown-color: #333;
+$font-gray-color: #c9c9c9;
+$font-highlight-color: #999;
+$font-ok-color: #006600;
+$font-warning-color: #fea700;
+$font-error-color: #f00;
+
+$font-white-color: #fff;
+$font-link-color: #0066cc;
+$font-rmb-color: #c00;
+
+//边框颜色
+$border-deep-color: #000;
+$border-brown-color: #333;
+$border-gray-color: #c9c9c9;
+$border-highlight-color: #999;
+$border-ok-color: #006600;
+$border-warning-color: #fea700;
+$border-error-color: #f00;
+
+//背景颜色
+$background-deep-color: #000;
+$background-brown-color: #333;
+$background-gray-color: #c9c9c9;
+$background-highlight-color: #999;
+$background-ok-color: #006600;
+$background-warning-color: #fea700;
+$background-error-color: #f00;
+
+/**
+ * 宽、高度
+ */
+
+//网站宽、侧边栏宽
+$site-layout-width: 1190px;
+$site-side-width: 205px;
+
+/**
+ * 常量：主要是为了编码使用方便，常量的值不可修改！
+ */
+$c-font-yh: Microsoft YaHei;
+$c-font-ss: SimSun;
+$c-font-a: Arial;
+
+
+
+
+
+
+

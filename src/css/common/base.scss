@@ -1,0 +1,142 @@
+@import "mixins_elements/_site-variable.scss";
+@import "mixins_elements/_rem-size.scss";
+@import "mixins_elements/_media-query.scss";
+
+html {
+    overflow-x: auto;
+    overflow-y: scroll;
+}
+html, body {
+    -webkit-text-size-adjust: none;
+}
+body, dl, dt, dd, ul, ol, li, pre, form, fieldset, input, p, blockquote, th, td, menu {
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+body {
+    text-align: left;
+    background-color: #fff;
+    color: $font-deep-color;
+    font: normal 1.2rem/1.5 "San Francisco Display","Helvetica Neue","黑体";
+    /*font: normal 1.4rem/1.5 "Arial", "Microsoft YaHei", "SimSun", "Tahoma", "Helvetica", "sans-serif";*/
+}
+a, img{
+    /*safari等一些浏览器中，不显示选中后的颜色*/
+    -webkit-tap-highlight-color: transparent;
+}
+fieldset, img {
+    border: 0 none;
+}
+input, button, select, textarea {
+    outline: 0;
+}
+input[type="search"], 
+input[type="submit"], 
+input[type="reset"], 
+input[type="button"], 
+button {
+    -webkit-appearance: none;
+}
+input::-webkit-search-cancel-button {
+    display: none;
+}
+input{
+    -webkit-appearance: none;
+}
+:focus {
+    outline: 0 none;
+}
+ol, ul, li {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+table, table td, table th {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+img {
+    vertical-align: middle;
+}
+a {
+    text-decoration: none;
+    color: $font-brown-color;
+    outline: 0;
+    cursor: pointer;
+}
+a:hover {
+    color: $site-key-color;
+    text-decoration: none;
+}
+.link {
+    color: $font-link-color;
+}
+a:hover.link {
+    color: $font-link-color;
+    text-decoration: underline;
+}
+//清浮动
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+}
+.clearfix {
+    display: block;
+    *display: inline-block;
+    _zoom: 1;
+}
+/* .yuan {
+    vertical-align: middle;
+    color: $font-rmb-color;
+    font-family: $c-font-a;
+    -webkit-font-smoothing: antialiased;
+} */
+.hide {
+    display: none;
+}
+.show-block {
+    display: block;
+}
+.show-webkit-box{
+    display: -webkit-box;
+}
+.loading {
+    color: #c00
+}
+
+// 禁止用户选择文本
+*:not(input) {
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+//iconfont
+@font-face {
+    font-family: 'iconfont';
+    src: url('../../fonts/iconfont.eot'); /* IE9*/
+    src: url('../../fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../fonts/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../../fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../../fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont {
+    font-family: "iconfont","Microsoft YaHei" !important;
+    font-size: 1.2rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}

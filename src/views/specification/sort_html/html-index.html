@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>前端规范——HTML</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" type="text/css" href="../../../css/specification/index.css">
+    <!--# include file="/dev/dist/views/ssi/specification/environment-config.html" -->
+</head>
+<body>
+
+<!-- 代码风格 -->
+<section class="main-cont">
+    <h2 id="html_style">代码风格</h2>
+    <!-- 缩进与换行 -->
+    <h3 id="html_style_1">缩进与换行</h3>
+    <div class="cont-box">
+        <p>[强制]使用4个空格做为一个缩进层级。</p>
+    </div>
+    <!-- 命名 -->
+    <h3 id="html_style_2">命名</h3>
+    <div class="cont-box">
+        <p>[强制]单词字母小写，class单词间以 - 分隔；id单词间以 _ 分隔。</p>
+        <p>[强制]class命名要以模块/功能命名，不以描述命名，并尽量简短。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            &lt;div class="side-nav"&gt;&lt;/div&gt;
+            <i class="iconfont bad">&#xe602;</i>
+            &lt;div class="leftGray"&gt;&lt;/div&gt;
+        </div>
+        <p>[强制]禁止为了 hook 脚本 ，创建无样式信息的class。</p>
+        <p>[建议]以id/属性 (data-xx = "") 来绑定脚本。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            &lt;div class="j-index"&gt;&lt;/div&gt;
+            <i class="iconfont bad">&#xe602;</i>
+            &lt;div data-index = "1"&gt;&lt;/div&gt;
+        </div>
+        <p>[强制]同一页面，应避免使用相同的 name 与 id。(解释：IE document.getElementById 混淆)</p>
+    </div>
+    <!-- 标签 -->
+    <h3 id="html_style_3">标签</h3>
+    <div class="cont-box">
+        <p>[强制]标签名必须使用小写字母。</p>
+        <p>[强制]对于无需自闭合的标签 (input、br、img、hr等)，不允许自闭合。(例外：对代码体积严格要求的场景除外。)</p>
+        <p>[强制]标签使用必须符合标签嵌套规则。(例：p 标签中放 div)</p>
+        <p>[强制]在 CSS 可以实现相同需求的情况下不得使用表格进行布局。</p>
+        <p>[建议]标签的使用应尽量简洁，减少不必要的标签。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            &lt;img class="avatar" src="image.png"&gt;
+            <i class="iconfont bad">&#xe602;</i>
+            &lt;div class="avatar"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;img src="image.png"&gt;
+            <br>&lt;/div&gt;
+        </div>
+    </div>
+    <!-- 属性 -->
+    <h3 id="html_style_4">属性</h3>
+    <div class="cont-box">
+        <p>[强制]属性名必须使用小写字母；属性值必须用双引号包围。</p>
+        <p>[建议]布尔类型的属性 (disabled、checked)，建议不添加属性值。</p>
+    </div>
+</section>
+<!-- 通用 -->
+<section class="main-cont">
+    <h2 id="html_normal">通用</h2>
+    <!-- DOCTYPE -->
+    <h3 id="html_normal_1">DOCTYPE</h3>
+    <div class="cont-box">
+        <p>[强制]使用 HTML5 的 doctype 来启用标准模式，建议使用大写的 DOCTYPE。</p>
+        <div class="code-box">
+            &lt;!DOCTYPE html&gt;
+        </div>
+        <p>[建议]启用 IE Edge 模式。</p>
+        <div class="code-box">
+            &lt;meta http-equiv="X-UA-Compatible" content="IE=Edge"&gt;
+        </div>
+        <p>[建议]在 html 标签上设置正确的 lang 属性。</p>
+        <div class="code-box">
+            &lt;html lang="zh-CN"&gt;
+        </div>
+    </div>
+    <!-- 编码 -->
+    <h3 id="html_normal_2">编码</h3>
+    <div class="cont-box">
+        <p>[强制]页面必须使用精简形式，明确指定字符编码。指定字符编码的 meta 必须是 head 的第一个直接子元素。</p>
+    </div>
+    <!-- CSS和JS引入 -->
+    <h3 id="html_normal_3">CSS和JS引入</h3>
+    <div class="cont-box">
+        <p>[强制]引入 CSS 时必须指明 rel="stylesheet"。</p>
+        <div class="code-box">
+            &lt;link rel="stylesheet" src="page.css"&gt;
+        </div>
+        <p>[建议]引入 CSS 和 JavaScript 时无须指明 type 属性。(text/css 和 text/javascript 是 type 的默认值。)</p>
+        <p>[建议]在 head 中引入页面需要的所有 CSS 资源; JavaScript 应当放在页面末尾，或采用异步加载。</p>
+        <p>[建议]移动环境或只针对现代浏览器设计的 Web 应用，如果引用外部资源的 URL 协议部分与页面相同，建议省略协议前缀。(使用 protocol-relative URL 引入 CSS，在 IE7/8 下，会发两次请求。是否使用 protocol-relative URL 应充分考虑页面针对的环境。)</p>
+        <div class="code-box">
+            &lt;script src="//s1.bdstatic.com/cache/static/jquery-1.10.2.min_f2fb5194.js"&gt;&lt;/script&gt;
+        </div>
+    </div>
+</section>
+<!-- HEAD -->
+<section class="main-cont">
+    <h2 id="html_head">head</h2>
+    <h3 id="html_head_1">title</h3>
+    <div class="cont-box">
+        <p>[强制]页面必须包含 title 标签声明标题。</p>
+        <p>[强制]title 必须作为 head 的直接子元素，并紧随 charset 声明之后。</p>
+    </div>
+    <h3 id="html_head_2">favicon</h3>
+    <div class="cont-box">
+        <p>[强制]保证 favicon 可访问。(1、在 Web Server 根目录放置 favicon.ico 文件；2、使用 link 指定 favicon。)</p>
+        <div class="code-box">
+            &lt;link rel="shortcut icon" href="//g.alicdn.com/mui/global/1.2.35/file/favicon.ico" type="image/x-icon"/&gt;
+        </div>
+    </div>
+    <h3 id="html_head_3">viewport</h3>
+    <div class="cont-box">
+        <p>[建议]若页面欲对移动设备友好，需指定页面的 viewport 。</p>
+        <div class="code-box">
+            &lt;meta name="viewport" content="width=device-width,user-scalable=no"&gt;
+            <br>
+            &lt;meta name="viewport" content="width=320,maximum-scale=1.3,user-scalable=no"&gt;
+        </div>
+    </div>
+</section>
+<!-- 图片 -->
+<section class="main-cont">
+    <h2 id="html_picture">图片</h2>
+    <div class="cont-box">
+        <p>[强制]禁止 img 的 src 取值为空。延迟加载的图片也要增加默认的 src 。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            &lt;img src="pixel.png" real-src="path/realpic.png"&gt;
+            <i class="iconfont bad">&#xe602;</i>
+            &lt;img src=""&gt;
+        </div>
+        <p>[建议]避免为 img 添加不必要的 title 属性；为重要图片添加 alt 属性。</p>
+        <p>[建议]添加 width 和 height 属性，以避免页面抖动。</p>
+        <p>[建议]有下载需求的图片采用 img 标签实现，无下载需求的图片采用 CSS 背景图实现。</p>
+    </div>
+</section>
+<!-- 表单 -->
+<section class="main-cont">
+    <h2 id="html_form">表单</h2>
+    <h3 id="html_form_1">控件标题</h3>
+    <div class="cont-box">
+        <p>[强制]有文本标题的控件必须使用 label 标签将其与其标题相关联。(两种方式：1、将控件置于 label 内。2、label 的 for 属性指向控件的 id。)</p>
+        <div class="code-box">
+            &lt;label&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;input type="checkbox" name="confirm" value="on"&gt;我已确认上述条款<br>
+            &lt;/label&gt;<br><br>
+            &lt;label for="username"&gt;用户名：&lt;/label&gt;<br>
+            &lt;input type="textbox" name="username" id="username"&gt;
+        </div>
+    </div>
+    <h3 id="html_form_2">按钮</h3>
+    <div class="cont-box">
+        <p>[强制]使用 button 元素时必须指明 type 属性值。</p>
+        <p>[建议]不要使用按钮类元素的 name 属性。(浏览器兼容问题，提交表单时会引起难以发现的问题。)</p>
+        <div class="code-box">
+            &lt;button type="submit"&gt;提交&lt;/button&gt;
+            <br>
+            &lt;button type="button"&gt;取消&lt;/button&gt;
+        </div>
+    </div>
+    <h3 id="html_form_3">可访问性(A11Y)</h3>
+    <div class="cont-box">
+        <p>[建议]负责主要功能的按钮在 DOM 中的顺序应靠前。</p>
+        <div class="code-box">
+            <i class="iconfont">&#xe603;</i>
+            &lt;style&gt;<br>
+            .buttons .button-group {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;float: right;<br>
+            }<br>
+            &lt;/style&gt;<br>
+
+            &lt;div class="buttons"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="button-group"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &lt;button type="submit"&gt;提交&lt;/button&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &lt;button type="button"&gt;取消&lt;/button&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+            &lt;/div&gt;<br>
+
+            <i class="iconfont bad">&#xe602;</i>
+            &lt;style&gt;<br>
+            .buttons button {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;float: right;<br>
+            }<br>
+            &lt;/style&gt;<br>
+
+            &lt;div class="buttons"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button"&gt;取消&lt;/button&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="submit"&gt;提交&lt;/button&gt;<br>
+            &lt;/div&gt;
+        </div>
+        <p>[建议]当使用 JavaScript 进行表单提交时，如果条件允许，应使原生提交功能正常工作。(当浏览器 JS 运行错误或关闭 JS 时，提交功能将无法工作。如果正确指定了 form 元素的 action 属性和表单控件的 name 属性时，提交仍可继续进行。)</p>
+        <div class="code-box">
+            &lt;form action="/login" method="post"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;p&gt;&lt;input name="username" type="text" placeholder="用户名">&lt;/p&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;p&gt;&lt;input name="password" type="password" placeholder="密码">&lt;/p&gt;<br>
+            &lt;/form&gt;
+        </div>
+        <p>[建议]在针对移动设备开发的页面时，根据内容类型指定输入框的 type 属性。</p>
+        <div class="code-box">
+            &lt;input type="date"&gt;
+        </div>
+    </div>
+</section>
+<!-- 多媒体 -->
+<section class="main-cont">
+    <h2 id="html_media">多媒体</h2>
+    <div class="cont-box">
+        <p>[建议]当在现代浏览器中使用 audio 以及 video 标签来播放音频、视频时，应当注意格式。</p>
+        <p>[建议]在支持 HTML5 的浏览器中优先使用 audio 和 video 标签来定义音视频元素。</p>
+        <p>[建议]使用退化到插件的方式来对多浏览器进行支持。</p>
+        <div class="code-box">
+            &lt;audio controls&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;source src="audio.mp3" type="audio/mpeg"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;source src="audio.ogg" type="audio/ogg"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;object width="100" height="50" data="audio.mp3"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &lt;embed width="100" height="50" src="audio.swf"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;/object&gt;<br>
+            &lt;/audio&gt;<br>
+
+            &lt;video width="100" height="50" controls&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;source src="video.mp4" type="video/mp4"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;source src="video.ogg" type="video/ogg"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;object width="100" height="50" data="video.mp4"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &lt;embed width="100" height="50" src="video.swf"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &lt;/object&gt;<br>
+            &lt;/video&gt;
+        </div>
+        <p>[建议]只在必要的时候开启音视频的自动播放。</p>
+        <p>[建议]在 object 标签内部提供指示浏览器不支持该标签的说明。</p>
+        <div class="code-box">
+            &lt;object width="100" height="50" data="something.swf"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                DO NOT SUPPORT THIS TAG<br>
+            &lt;/object&gt;
+        </div>
+    </div>
+</section>
+<!-- 模板中的 HTML -->
+<section class="main-cont">
+    <h2 id="html_template">模板中的HTML</h2>
+    <div class="cont-box">
+        <p>[建议]模板代码的缩进优先保证 HTML 代码的缩进规则。</p>
+        <p>[建议]模板代码应以保证 HTML 单个标签语法的正确性为基本原则。</p>
+        <p>[建议]在循环处理模板数据构造表格时，若要求每行输出固定的个数，建议先将数据分组，之后再循环输出。</p>
+    </div>
+</section>
+<!-- 导航 -->
+<nav class="side-nav-box">
+    <i class="iconfont">&#xe601;</i>
+    <div class="side-nav">
+        <a href="#html_style" class="side-nav-tit">代码风格</a>
+        <a href="#html_style_1">缩进与换行</a>
+        <a href="#html_style_2">命名</a>
+        <a href="#html_style_3">标签</a>
+        <a href="#html_style_4">属性</a>
+
+        <a href="#html_normal" class="side-nav-tit">通用</a>
+        <a href="#html_normal_1">DOCTYPE</a>
+        <a href="#html_normal_2">编码</a>
+        <a href="#html_normal_3">CSS和JS引入</a>
+
+        <a href="#html_head" class="side-nav-tit">head</a>
+        <a href="#html_head_1">title</a>
+        <a href="#html_head_2">favicon</a>
+        <a href="#html_head_3">viewport</a>
+
+        <a href="#html_picture" class="side-nav-tit">图片</a>
+
+        <a href="#html_form" class="side-nav-tit">表单</a>
+        <a href="#html_form_1">控件标题</a>
+        <a href="#html_form_2">按钮</a>
+        <a href="#html_form_3">可访问性(A11Y)</a>
+
+        <a href="#html_media" class="side-nav-tit">多媒体</a>
+
+        <a href="#html_template" class="side-nav-tit">模板中的HTML</a>
+    </div>
+</nav>
+
+
+</body>
+</html>
