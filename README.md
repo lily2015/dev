@@ -1,7 +1,3 @@
-#前端规范
+本地代码开发
 
-HTML规范
-
-CSS规范
-
-JavaScript规范
+#前端规范 specification
