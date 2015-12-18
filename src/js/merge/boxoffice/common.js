@@ -1,0 +1,1 @@
+document.write('<script src="/bower_components/react/react.min.js"></script>');

@@ -1,0 +1,1 @@
+document.write('<script src="/js/components/boxoffice/boxoffice.js"></script>');
