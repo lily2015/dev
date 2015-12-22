@@ -6,14 +6,19 @@
     <!--# include file="/dev/dist/views/ssi/boxoffice/environment-config.html" -->
     <script>
     // document.write('<link rel="stylesheet" href="http://' + css_server + rev + '/css/common/main.css">');
-    document.write('<link rel="stylesheet" href="http://' + css_server + '/css/boxoffice/boxoffice.css">');
+    document.write('<link rel="stylesheet" href="http://' + css_server + '/dev/dist/css/boxoffice/boxoffice.css">');
     </script>
 </head>
 <body>
-    <div id="example"></div>
+    <header class="pro-header" data-mark="ticket-header">
+        <div class="pro-header-tit">实时票房</div>
+        <a href="javascript:;" class="pro-back" data-ctrl="ticket-goback"></a>
+        <a href="javascript:;" class="pro-compare" data-ctrl="filter-btn"></a>
+    </header>
+
     <script>
-    document.write('<script src="http://' + js_server + '/js/boxoffice/common.js"><\/script>');
-    document.write('<script src="http://' + js_server + '/js/boxoffice/boxoffice.js"><\/script>');
+    document.write('<script src="http://' + js_server + '/dev/dist/js/boxoffice/common.js"><\/script>');
+    document.write('<script src="http://' + js_server + '/dev/dist/js/boxoffice/boxoffice.js"><\/script>');
     </script>
 </body>
 </html>
