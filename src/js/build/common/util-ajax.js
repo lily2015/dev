@@ -18,7 +18,7 @@ dataInfoMain.prototype = {
       p.push(k + "=" + params[k]);
     };
     params = p.join('&');
-    var _ajax = dat.JdataType == 'jsonp' ? $.ajax({
+    var _ajax = dat.JdataType != 'jsonp' ? $.ajax({
       type: dat.Jtype || 'get',
       url: dat.Jurl,
       data: params,
@@ -53,8 +53,6 @@ dataInfoMain.prototype = {
         }); 
       });
     };    
-
-    return _ajax;
   }
 };
 /* 事件初始化 */

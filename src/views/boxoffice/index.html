@@ -5,17 +5,104 @@
     <title>实时票房</title>
     <!--# include file="/dev/dist/views/ssi/boxoffice/environment-config.html" -->
     <script>
-    // document.write('<link rel="stylesheet" href="http://' + css_server + rev + '/css/common/main.css">');
+    document.write('<link rel="stylesheet" href="http://' + css_server + '/dev/dist/css/boxoffice/common/boxoffice-base.css">');
     document.write('<link rel="stylesheet" href="http://' + css_server + '/dev/dist/css/boxoffice/boxoffice.css">');
     </script>
 </head>
 <body>
-    <header class="pro-header" data-mark="ticket-header">
-        <div class="pro-header-tit">实时票房</div>
-        <a href="javascript:;" class="pro-back" data-ctrl="ticket-goback"></a>
-        <a href="javascript:;" class="pro-compare" data-ctrl="filter-btn"></a>
-    </header>
-
+    <div id="react_tpl_out">
+        <header class="header" data-mark="ticket-header">
+            <div class="header_title">实时票房</div>
+            <a href="javascript:;" class="btn_back" data-ctrl="ticket-goback"></a>
+            <a href="javascript:;" class="btn_position" data-ctrl="filter-btn"></a>
+        </header>
+        <div class="index_tab">
+            <div class="container_box">
+                <ul class="date" data-mark="date-out">
+                    <li class="pre_day">
+                        <p class="btn_pre" data-ctrl="date-pn" data-mark="pre">12-22</p>
+                    </li>
+                    <li class="now_day">
+                        <p class="btn_now" data-ctrl="dt">2015-12-23</p>
+                        <div class="img_now"></div>
+                        <p class="time_yet">上次更新时间 11:30</p>
+                    </li>
+                    <li class="next_day">
+                        <p class="btn_next remove-after" data-ctrl="date-pn" data-mark="next">12-24</p>
+                        <div class="img_next"></div>
+                    </li>
+                </ul>
+            </div>
+            <div id="calendar_out"></div>
+            <div class="get-data-failed" data-mark="data-out">
+                <div class="chart">
+                    <ul class="chart_title">
+                        <li class="chart_title_li">
+                            <p class="day_all day_max">总票房</p>
+                            <p class="day_all_num day_min">2880.7
+                                <span class="unit-num">万</span>
+                            </p>
+                        </li>
+                        <li class="chart_title_li border">
+                            <p class="day_max">总排片</p>
+                            <p class="day_min">15.11
+                                <span class="unit-num">万</span>
+                                <span>场</span>
+                            </p>
+                        </li>
+                        <li class="chart_title_li">
+                            <p class="day_all day_max">新上映</p>
+                            <p class="day_min">0<span>部</span></p>
+                        </li>
+                    </ul>
+                    <div id="pie_chart_aim"></div>
+                </div>
+                <div class="box_office" id="sort_out">
+                    <ul class="box_office_ul box_office_firstUi">
+                        <li class="box_office_li box_office_num"></li>
+                        <li class="box_office_li name"><p>影片名称</p></li>
+                        <li class="box_office_li day_office">
+                            <p class="sort_p max sortDown_color" data-ctrl="sort" data-mark="rev">
+                                实时票房
+                            </p>
+                        </li>
+                        <li class="box_office_li ratio">
+                            <p class="sort_p max" data-ctrl="sort" data-mark="cnt-rate">
+                                排片占比
+                            </p>
+                        </li>
+                        <li class="box_office_li seat">
+                            <p class="sort_p min" data-ctrl="sort" data-mark="sale-rate">
+                                上座率
+                            </p>
+                        </li>
+                        <li class="box_office_li all_office">
+                            <p class="sort_p min" data-ctrl="sort" data-mark="sum-rev">
+                                累计票房
+                            </p>
+                        </li>
+                    </ul>
+                    <div id="mymoives_box"></div>
+                    <ul class="box_office_ul">
+                        <li class="box_office_li box_office_num">1</li>
+                        <li class="box_office_li name">
+                            <p class="movie_name">
+                                <a href="http://pro.mtime.cn/views/movie/movie_detail.html?movieId=196282" class="movie-item-link">寻龙诀</a>
+                                <span class="movie_yet">已上映6天</span>
+                            </p>
+                        </li>
+                    </ul>                                
+                </div>
+                <footer class="footer">
+                    <p class="p_attention">
+                        注意：实时票房包含今天未开映场次已售出的票房，数据每30分钟更新一次，上次更新时间11:30
+                    </p>
+                    <button class="btn_yDay" data-ctrl="yesterday">查看昨日全国票房</button>
+                    <p class="p_title">Copyright 2006-2015 Mtime.com Inc. All rights reserved.</p>
+                </footer>
+            </div>
+        </div>
+    </div>
     <script>
     document.write('<script src="http://' + js_server + '/dev/dist/js/boxoffice/common.js"><\/script>');
     document.write('<script src="http://' + js_server + '/dev/dist/js/boxoffice/boxoffice.js"><\/script>');
