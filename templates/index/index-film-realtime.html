@@ -1,0 +1,40 @@
+<div id="film">
+    <h3 data-type="1">今日影片</h3>
+    <p class="i_stimer"><span>{{updTime}}</span></p>
+    <ul class="i_stot">
+        <li>
+            <p>总票房</p>
+            <p><strong>{{rev}}</strong>{{revUnit}}</p>
+        </li>
+        <li>
+            <p>总排片</p>
+            <p><strong>{{showCnt}}</strong>{{showCntUnit}}</p>
+        </li>
+        <li>
+            <p>新上映</p>
+            <p><strong>{{newMovieCnt}}</strong>{{newMovieCntUnit}}</p>
+        </li>
+    </ul>
+    <ul class="i_smlist">
+        {{if movies}} {{each movies}}
+        <li>
+            <dl data-id="{{$value.id}}">
+                <dt><img src="{{$value.img}}" /><i>{{$value.order}}</i></dt>
+                <dd>
+                    <h4>{{$value.title}}{{if $value.type}}<i class="i_smtag">{{$value.type}}</i>{{/if}}</h4> {{if $value.releaseDay}}{{if $value.releaseDay =='今日上映'}}
+                    <p style="color:#FF7F40">{{$value.releaseDay}}</p>{{else}}
+                    <p>{{$value.releaseDay}}</p>{{/if}}{{/if}}
+                    <p>{{$value.rev}}</p>
+                    <p>{{$value.sumRev}}</p>
+                </dd>
+                <dd>
+                    <p>票房比<span class="perbox"><i style=" background:#FFC120;width:{{$value.revRateShow}};"></i></span><b style="color:#FFC120;">{{$value.revRateShow}}</b></p>
+                    <p>排片比<span class="perbox"><i style=" background:#F05E5E;width:{{$value.showCntRateShow}};"></i></span><b style="color:#F05E5E;">{{$value.showCntRateShow}}</b></p>
+                    <p>上座率<span class="perbox"><i style=" background:#41A4E6;width:{{$value.saledSeatRateShow}};"></i></span><b style="color:#41A4E6;">{{$value.saledSeatRateShow}}</b></p>
+                </dd>
+            </dl>
+        </li>
+        {{/each}} {{/if}}
+    </ul>
+    <p class="i_smore" data-more="1">查看更多</p>
+</div>

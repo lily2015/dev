@@ -234,19 +234,32 @@ gulp.task('rev', function(){
 
 /*测试环境修改环境变量文件*/
 gulp.task('template_test', function () {
-    return gulp.src('src/views/ssi/*.html')
-      .pipe(template({date_rev: date_rev}))
-      .pipe(replace('data.pro.mtime.com', 'data1.pro.mtime.com'))
-      .pipe(gulp.dest(config.views.dist + '/ssi/'));
+  return gulp.src('src/views/ssi/*.html')
+    .pipe(template({date_rev: date_rev}))
+    .pipe(replace('data.pro.mtime.com', 'data1.pro.mtime.com'))
+    .pipe(gulp.dest(config.views.dist + '/ssi/'));
+});
+
+gulp.task('template_test_node', function (){
+  return gulp.src('config/config.src.js')
+    .pipe(template({date_rev: date_rev}))
+    .pipe(rename('config.js'))
+    .pipe(gulp.dest('config/'));
 });
 
 /*修改环境变量文件*/
 gulp.task('template', function () {
     return gulp.src('src/views/ssi/*.html')
-      .pipe(template({date_rev: date_rev}))
+      // .pipe(template({date_rev: date_rev}))
       // .pipe(replace('data.pro.mtime.com', 'data1.pro.mtime.com'))
-      .pipe(gulp.dest(config.views.dist + '/ssi/'));
+      // .pipe(gulp.dest(config.views.dist + '/ssi/'));
 });
+gulp.task('template_node', function (){
+  return gulp.src('config/config.src.js')
+    // .pipe(template({date_rev: date_rev}))
+    .pipe(rename('config.js'))
+    .pipe(gulp.dest('config/'));
+})
 
 /*文件改动监听*/
 gulp.task('watch', function(){
@@ -261,12 +274,15 @@ gulp.task('watch', function(){
 
 /*任务执行*/
 gulp.task('output', ['css', 'images', 'favicon', 'fonts', 'views', 'jsp', 'concatScript', 'bowerjs'], function(){
+  gulp.start('template');
+  gulp.start('template_node');
 });
 
 /*任务执行*/
 gulp.task('output_test', ['css_online', 'images_online', 'favicon', 'fonts', 'views', 'jsp', 'concatScript_online', 'bowerjs'], function(){
   // gulp.start('rev');
   gulp.start('template_test');
+  gulp.start('template_test_node');
 });
 
 /*任务执行*/
@@ -274,6 +290,7 @@ gulp.task('output_online', ['css_online', 'images_online', 'favicon', 'fonts', '
   // gulp.start('rev');
   // gulp.start('template');
   gulp.start('template_test');
+  gulp.start('template_test_node');
 });
 
 /*清空*/

@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    {{include '../ssi/meta-info'}} {{include '../ssi/environment-config'}}
+    <script>
+    document.write('<link rel="stylesheet" href="http://' + css_server + rev + '/css/common/main.css">');
+    document.write('<link rel="stylesheet" href="http://' + css_server + rev + '/css/index/index.css">');
+    </script>
+</head>
+
+<body>
+    <!--header-->
+    <header class="header">
+        <div class="header_title">
+            <div class="logo"></div>
+            <p>票房分析</p>
+        </div>
+        <a href="javascript:void(0);" class="btn_go_search"></a>
+    </header>
+    <!--header end-->
+    <!--top4-->
+    <div class="container_box">
+        <article class="i_top4">
+            <dl class="clearfix">
+                <dd data-box="1">
+                    <i></i>
+                    <p>实时票房</p>
+                </dd>
+                <dd data-box="2">
+                    <i></i>
+                    <p>实时排片</p>
+                </dd>
+                <dd data-box="3">
+                    <i></i>
+                    <p>上映日历</p>
+                </dd>
+                <dd data-box="4">
+                    <i></i>
+                    <p>我的定制</p>
+                </dd>
+            </dl>
+        </article>
+        <!--top4 end-->
+        <p class="cus_between"></p>
+        <!--实时票房-->
+        <article class=" i_realtime" id="film_realtime">
+            {{include './index-film-realtime'}}
+        </article>
+        <!--实时票房 end-->
+        <p class="cus_between"></p>
+        <!--全国影院-->
+        <article class=" i_realtime" id="ciname_realtime">
+        </article>
+        <!--全国影院 end-->
+        <p class="cus_between"></p>
+        <!--全国院线-->
+        <article class=" i_realtime" id="theatre_realtime">
+        </article>
+        <!--全国院线 end-->
+        <p class="cus_between"></p>
+        <!--上映日历-->
+        <article class=" i_realtime" id="calendar_realtime">
+            <!--list end-->
+        </article>
+    </div>
+    <div id="download"></div>
+    <!--上映日历 end-->
+    {{include '../ssi/statistical-code'}}
+    <script>
+    document.write('<script src="http://' + js_server + rev + '/js/common/base-template.js"><\/script>');
+    document.write('<script src="http://' + js_server + rev + '/js/index/index-node.js"><\/script>');
+    </script>
+</body>
+
+</html>

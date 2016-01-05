@@ -1,0 +1,58 @@
+<script>
+(function() {
+
+    function loading() {
+        var body = document.body;
+        var loadingHtm = '<div class="newloading"><div class="newloader"><i>&nbsp;</i><p>奋力加载中…</p></div><div class="spr_loading"><i></i></div></div>'
+        var loadingWrap = document.createElement("div");
+        loadingWrap.innerHTML = loadingHtm;
+        loadingWrap.setAttribute("id", "loadingWrap");
+        loadingWrap.style.zIndex = 1000;
+
+        body.appendChild(loadingWrap);
+
+        return function() {
+            body.removeChild(loadingWrap);
+            body = null;
+            loadingWrap = null;
+        };
+    };
+
+    var app = {
+    	container: {
+	        isApp: false, //是否App
+	        isiPhoneApp: false, //是否iPhoneApp
+	        iPhoneAppVersion: 0, //iPhoneApp的版本号
+	        isAndroidApp: false, //是否AndroidApp
+	        AndroidAppVersion: 0 //AndroidApp的版本号
+	    }
+    };
+    var ua = navigator.userAgent,
+        version;
+    var isIosVersion = ua.indexOf('Mtime_iPhone_B2BPro'),
+        isAndroidVersion = ua.indexOf('Mtime_Android_B2BPro');
+
+    // 判断UA  iOS
+    if (isIosVersion >= 0) {
+        app.container.isApp = true;
+        app.container.isiPhoneApp = true;
+
+        version = ua.split('Mtime_iPhone_B2BPro')[1].split('(WebView')[0];
+        app.container.iPhoneAppVersion = parseInt(version.replace(/\D/g, ''), 10);
+    }
+    // 判断UA  Android
+    if (isAndroidVersion >= 0) {
+        app.container.isApp = true;
+        app.container.isAndroidApp = true;
+
+        version = ua.split('Mtime_Android_B2BPro')[1].split('(WebView')[0];
+        app.container.AndroidAppVersion = parseInt(version.replace(/\D/g, ''), 10);
+    }
+
+    if (!app.container.isApp) {
+	    console.log("loadingBegin in inc");
+        window.closeTip = loading();
+    }
+
+})();
+</script>

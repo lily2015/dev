@@ -1,0 +1,17 @@
+<script type="text/javascript">
+var server = "{{config.server}}",
+    api_server = "{{config.api_server}}",
+    css_server = "{{config.css_server}}",
+    js_server = '{{config.js_server}}',
+    img_server = '{{config.img_server}}',
+    domain_site = "{{config.domain_site}}",
+    rev = '{{config.rev}}';
+rev = rev.length > 0 ? '/' + rev : '';
+
+(function(doc, win) {
+    var docEl = doc.documentElement;
+    var clientWidth = docEl.clientWidth;
+    if (!clientWidth) return;
+    docEl.style.fontSize = 10 * (clientWidth / 320) + 'px';
+})(document, window);
+</script>
