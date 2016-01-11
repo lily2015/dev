@@ -9,7 +9,7 @@ var logInfo = log4js.getLogger('logInfo');
 
 module.exports = function (){
   var _this = this;
-  var port = process.env.PORT || 3010;
+  var port = process.env.PORT || 4000;
   var env = process.env.NODE_ENV || 'dev';  
 
   // logs start info output
